@@ -21,8 +21,12 @@ jobs:
       - name: Setup Node.js and cache dependencies
         uses: actions/setup-node@v4
         with:
-          node-version: '14' # Update to the desired Node.js version
+          node-version: '14' # Update to a stable Node.js version
           cache: 'npm' # Cache npm packages
+          always-auth: false
+          check-latest: false
+          token: ${{ secrets.GITHUB_TOKEN }}
+          cache-dependency-path: ./package-lock.json
       - name: Install dependencies and build
         run: |
           npm install -g pnpm
@@ -41,3 +45,4 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
