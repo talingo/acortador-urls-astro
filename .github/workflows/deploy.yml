@@ -15,15 +15,16 @@ permissions:
   id-token: write
 
 jobs:
-  build:
+    install:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout your repository using git
-        uses: actions/checkout@v4
-      - name: Install, build, and upload your site
-        uses: pnpm/action-setup@v2
+        - uses: actions/checkout@v3
+        
+        - name: Setup pnpm
+        uses: pnpm/action-setup@v3 # docs https://pnpm.io/continuous-integration#github-actions
         with:
-        version: 8
+            version: 8  # Optional: specify a pnpm version
           # path: . # The root location of your Astro project inside the repository. (optional)
           # node-version: 20 # The specific version of Node that should be used to build your site. Defaults to 20. (optional)
           # package-manager: pnpm@latest # The Node package manager that should be used to install dependencies and build your site. 
