@@ -2,47 +2,31 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Clear npm cache
-        run: npm cache clean --force
-      - name: Checkout your repository using git
-        uses: actions/checkout@v4
-      - name: Setup Node.js and cache dependencies
-        uses: actions/setup-node@v4
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
         with:
-          node-version: '14' # Update to a stable Node.js version
-          cache: 'npm' # Cache npm packages
-          always-auth: false
-          check-latest: false
-          token: ${{ secrets.GITHUB_TOKEN }}
-          cache-dependency-path: ./package-lock.json
-      - name: Install dependencies and build
-        run: |
-          npm install -g pnpm
-          pnpm install
-          npm run build
-      - name: Upload your site
-        run: npm run deploy
+          node-version: '14'
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Astro project
+        run: pnpm run build
+
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist # Adjust this path if your build output is in a different directory
+          #cname: your-custom-domain.com # Optional: If you have a custom domain, add it here
