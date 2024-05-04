@@ -19,7 +19,7 @@ jobs:
           node-version: '14'
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install
 
       - name: Build Astro project
         run: pnpm run build
