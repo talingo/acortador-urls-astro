@@ -3,6 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "pnpm": {
+    "packageManager": "pnpm",
     "version": "8.14.0"
   },
   "scripts": {
