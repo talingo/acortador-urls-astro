@@ -8,6 +8,7 @@ import react from "@astrojs/react";
 // https://astro.build/config
 export default defineConfig({
   site: 'https://talingo.github.io',
+  base: '/acortador-URLs',
   output: "server",
   adapter: node({
     mode: "standalone"
