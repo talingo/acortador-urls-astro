@@ -30,8 +30,9 @@ jobs:
       - name: Print Node.js version
         run: node --version
 
-- name: Print npm version
-  run: npm --version
+      - name: Print npm version
+        run: npm --version
+        
       - name: Build Astro project
         run: pnpm run build
 
