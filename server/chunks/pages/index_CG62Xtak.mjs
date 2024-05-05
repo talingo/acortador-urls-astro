@@ -1,9 +1,9 @@
 import { c as createAstro, d as createComponent, r as renderTemplate, m as maybeRenderHead, s as spreadAttributes, e as renderComponent, f as addAttribute, g as renderHead, h as renderSlot } from '../astro_DMkAxNXf.mjs';
-import { g as getUserByEmail, d as db, U as User } from './_code__C1VEFFcA.mjs';
+import { g as getUserByEmail, d as db, U as User } from './_code__Dv3a0MUT.mjs';
 import { jsxs, jsx } from 'react/jsx-runtime';
 import { useState, useRef } from 'react';
 import { toast } from 'sonner';
-import { g as getSession } from './__C5iiSQvV.mjs';
+import { g as getSession } from './__C0QAgbCP.mjs';
 /* empty css                          */
 /* empty css                          */
 
@@ -154,7 +154,7 @@ const $$Index = createComponent(($$result, $$props, $$slots) => {
 }, "/home/runner/work/acortador-urls-astro/acortador-urls-astro/src/pages/index.astro", void 0);
 
 const $$file = "/home/runner/work/acortador-urls-astro/acortador-urls-astro/src/pages/index.astro";
-const $$url = "";
+const $$url = "/acortador";
 
 const index = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,

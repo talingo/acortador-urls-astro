@@ -1,7 +1,7 @@
 import { c as createAstro, d as createComponent, r as renderTemplate, m as maybeRenderHead, s as spreadAttributes, e as renderComponent, f as addAttribute } from '../astro_DMkAxNXf.mjs';
-import { g as getSession } from './__C5iiSQvV.mjs';
-import { $ as $$Layout } from './index_Bqr8go77.mjs';
-import { g as getUserByEmail, a as getUrlsFromUser } from './_code__C1VEFFcA.mjs';
+import { g as getSession } from './__C0QAgbCP.mjs';
+import { $ as $$Layout } from './index_CG62Xtak.mjs';
+import { g as getUserByEmail, a as getUrlsFromUser } from './_code__Dv3a0MUT.mjs';
 /* empty css                             */
 
 const $$Astro$1 = createAstro("https://talingo.github.io");
@@ -33,6 +33,6 @@ Ir al inicio
 }, "/home/runner/work/acortador-urls-astro/acortador-urls-astro/src/pages/mis-urls.astro", void 0);
 
 const $$file = "/home/runner/work/acortador-urls-astro/acortador-urls-astro/src/pages/mis-urls.astro";
-const $$url = "/mis-urls";
+const $$url = "/acortador/mis-urls";
 
 export { $$MisUrls as default, $$file as file, $$url as url };

@@ -240,8 +240,8 @@ const authConfig = defineConfig({
     // 	clientSecret: import.meta.env.GITHUB_CLIENT_SECRET,
     // }),		
     Google({
-      clientId: {"BASE_URL": "/", "MODE": "production", "DEV": false, "PROD": true, "SSR": true, "SITE": "https://talingo.github.io", "ASSETS_PREFIX": undefined}.GOOGLE_CLIENT_ID,
-      clientSecret: {"BASE_URL": "/", "MODE": "production", "DEV": false, "PROD": true, "SSR": true, "SITE": "https://talingo.github.io", "ASSETS_PREFIX": undefined}.GOOGLE_CLIENT_SECRET
+      clientId: {"BASE_URL": "/acortador", "MODE": "production", "DEV": false, "PROD": true, "SSR": true, "SITE": "https://talingo.github.io", "ASSETS_PREFIX": undefined}.GOOGLE_CLIENT_ID,
+      clientSecret: {"BASE_URL": "/acortador", "MODE": "production", "DEV": false, "PROD": true, "SSR": true, "SITE": "https://talingo.github.io", "ASSETS_PREFIX": undefined}.GOOGLE_CLIENT_SECRET
     })
   ]
 });
@@ -274,7 +274,7 @@ function AstroAuthHandler(prefix, options = authConfig) {
   };
 }
 function AstroAuth(options = authConfig) {
-  const { AUTH_SECRET, AUTH_TRUST_HOST, VERCEL, NODE_ENV } = Object.assign({"BASE_URL": "/", "MODE": "production", "DEV": false, "PROD": true, "SSR": true, "SITE": "https://talingo.github.io", "ASSETS_PREFIX": undefined}, { _: process.env._, NODE: process.env.NODE, NODE_ENV: process.env.NODE_ENV });
+  const { AUTH_SECRET, AUTH_TRUST_HOST, VERCEL, NODE_ENV } = Object.assign({"BASE_URL": "/acortador", "MODE": "production", "DEV": false, "PROD": true, "SSR": true, "SITE": "https://talingo.github.io", "ASSETS_PREFIX": undefined}, { _: process.env._, NODE: process.env.NODE, NODE_ENV: process.env.NODE_ENV });
   options.secret ??= AUTH_SECRET;
   options.trustHost ??= !!(AUTH_TRUST_HOST ?? VERCEL ?? NODE_ENV !== "production");
   const { prefix = "/api/auth", ...authOptions } = options;
@@ -289,7 +289,7 @@ function AstroAuth(options = authConfig) {
   };
 }
 async function getSession(req, options = authConfig) {
-  options.secret ??= Object.assign({"BASE_URL": "/", "MODE": "production", "DEV": false, "PROD": true, "SSR": true, "SITE": "https://talingo.github.io", "ASSETS_PREFIX": undefined}, { _: process.env._, NODE: process.env.NODE, NODE_ENV: process.env.NODE_ENV }).AUTH_SECRET;
+  options.secret ??= Object.assign({"BASE_URL": "/acortador", "MODE": "production", "DEV": false, "PROD": true, "SSR": true, "SITE": "https://talingo.github.io", "ASSETS_PREFIX": undefined}, { _: process.env._, NODE: process.env.NODE, NODE_ENV: process.env.NODE_ENV }).AUTH_SECRET;
   options.trustHost ??= true;
   const url = new URL(`${options.prefix}/session`, req.url);
   const response = await Auth(new Request(url, { headers: req.headers }), options);
