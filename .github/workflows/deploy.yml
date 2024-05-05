@@ -12,6 +12,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      
+      - name: Install pnpm
+        run: npm install -g pnpm@latest
+
+      - name: Add pnpm to PATH
+        run: echo "::add-path::$(npm bin -g)"
 
       - name: Setup Node.js and pnpm
         uses: actions/setup-node@v2
@@ -21,7 +27,11 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+      - name: Print Node.js version
+        run: node --version
 
+- name: Print npm version
+  run: npm --version
       - name: Build Astro project
         run: pnpm run build
 
