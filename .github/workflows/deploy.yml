@@ -38,6 +38,6 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.YOUR_PERSONAL_ACCESS_TOKEN }}
           publish_dir: ./dist # Adjust this path if your build output is in a different directory
-          # cname: your-custom-domain.com # Optional: If you have a custom domain, add it here
+          cname: your-custom-domain.com # Optional: If you have a custom domain, add it here
