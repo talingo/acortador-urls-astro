@@ -24,14 +24,14 @@ jobs:
       - name: Verify pnpm installation
         run: pnpm --version
 
-      - name: Add pnpm to PATH
-        run: echo "::add-path::$(npm bin -g)"
-      
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
       - name: Build Astro project
         run: pnpm run build
+
+      - name: Add pnpm bin to PATH
+        run: echo "export PATH=$HOME/.npm-global/bin:$PATH" >> $GITHUB_ENV
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
