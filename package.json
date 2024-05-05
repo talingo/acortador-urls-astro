@@ -2,7 +2,6 @@
   "name": "acortador-urls",
   "type": "module",
   "version": "0.0.1",
-  "packageManager": "pnpm@8.14.0",
   "scripts": {
     "dev": "astro dev --remote",
     "start": "astro dev",
