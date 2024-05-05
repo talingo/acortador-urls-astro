@@ -19,15 +19,15 @@ jobs:
       - name: Verify pnpm installation
         run: pnpm --version
 
-      - name: Add pnpm to PATH
-        run: echo "export PATH=$(npm bin -g):$PATH" >> $GITHUB_ENV
-
       - name: Setup Node.js and pnpm
         uses: actions/setup-node@v2
         with:
           node-version: '14'
           cache: 'pnpm'
 
+      - name: Add pnpm to PATH
+        run: echo "::add-path::$(npm bin -g)"
+      
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
