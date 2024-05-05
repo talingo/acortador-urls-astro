@@ -6,38 +6,36 @@ on:
       - main
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '18'
-
       - name: Install pnpm
-        run: npm install -g pnpm@8.14.0  # Replace '6.16.0' with the compatible version of pnpm for Node.js 14.21.3
+        run: npm install -g pnpm@latest
 
       - name: Verify pnpm installation
         run: pnpm --version
+
+      - name: Add pnpm to PATH
+        run: echo "export PATH=$(npm bin -g):$PATH" >> $GITHUB_ENV
+
+      - name: Setup Node.js and pnpm
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          cache: 'pnpm'
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
       - name: Build Astro project
-        env:
-          ASTRO_STUDIO_APP_TOKEN: ${{ secrets.ASTRO_STUDIO_APP_TOKEN }}
         run: pnpm run build
-
-      - name: Add pnpm bin to PATH
-        run: echo "export PATH=$HOME/.npm-global/bin:$PATH" >> $GITHUB_ENV
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist # Adjust this path if your build output is in a different directory
-          cname: your-custom-domain.com # Optional: If you have a custom domain, add it here
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # Ensure this token has the necessary permissions
+          publish_dir: ./dist  # Adjust this path if your build output is in a different directory
+          cname: your-custom-domain.com  # Optional: If you have a custom domain, add it here
