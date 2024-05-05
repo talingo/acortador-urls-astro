@@ -28,6 +28,8 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build Astro project
+        env:
+          ASTRO_STUDIO_APP_TOKEN: ${{ secrets.ASTRO_STUDIO_APP_TOKEN }}
         run: pnpm run build
 
       - name: Add pnpm bin to PATH
