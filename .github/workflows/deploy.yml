@@ -13,17 +13,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install pnpm
-        run: npm install -g pnpm@latest
-        
-      - name: Verify pnpm installation
-        run: pnpm --version
-
-      - name: Setup Node.js and pnpm
+      - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
-          cache: 'pnpm'
+          node-version: '18'
+
+      # If you choose to upgrade Node.js, skip this step
+      - name: Install compatible pnpm version
+        run: npm install -g pnpm@<compatible_version>
+        # Replace <compatible_version> with the version of pnpm that supports Node.js 14.21.3
+
+      - name: Verify pnpm installation
+        run: pnpm --version
 
       - name: Add pnpm to PATH
         run: echo "::add-path::$(npm bin -g)"
