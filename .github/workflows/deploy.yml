@@ -16,7 +16,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '18'
+          node-version: '20'
 
       - name: Install pnpm
         run: npm install -g pnpm@8.14.0  # Replace '6.16.0' with the compatible version of pnpm for Node.js 14.21.3
